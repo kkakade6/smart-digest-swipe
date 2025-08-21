@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SmartScroll Design System - Professional news app design
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Core app colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    /* SmartScroll brand colors */
+    --primary: 217 91% 60%; /* Professional blue #3B82F6 */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 217 91% 70%;
+    --primary-dark: 217 91% 50%;
+
+    /* Success colors for streaks and completed actions */
+    --success: 142 76% 36%; /* Green #16A34A */
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 69% 58%;
+
+    /* Warning colors for limits and alerts */
+    --warning: 38 92% 50%; /* Orange #F59E0B */
+    --warning-foreground: 0 0% 100%;
+
+    /* Card and surface colors */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --card-border: 220 13% 91%;
+    --card-hover: 217 32% 97%;
+
+    /* Secondary colors */
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    /* Muted colors for less important text */
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+
+    /* Accent colors */
+    --accent: 217 32% 97%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    /* Destructive colors */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border and input colors */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+
+    /* App specific colors */
+    --news-tech: 262 83% 58%; /* Purple for tech news */
+    --news-market: 142 76% 36%; /* Green for markets */
+    --news-startup: 38 92% 50%; /* Orange for startups */
+    --news-policy: 217 91% 60%; /* Blue for policy */
+    --news-ai: 332 84% 57%; /* Pink for AI */
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 69% 58%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14.3% 99%));
+
+    /* Shadows */
+    --shadow-card: 0 2px 8px -2px hsl(220 13% 91% / 0.6);
+    --shadow-card-hover: 0 4px 16px -4px hsl(217 91% 60% / 0.2);
+    --shadow-drawer: 0 4px 24px -8px hsl(220 13% 91% / 0.8);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 12px;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --primary: 217 91% 70%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 217 91% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Custom scrollbar styling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Line clamp utility for text truncation */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  /* News card animations */
+  .news-card-enter {
+    animation: slideInFromRight 0.3s ease-out;
+  }
+
+  .news-card-swipe {
+    transition:
+      transform 0.2s ease-out,
+      box-shadow 0.2s ease-out;
+  }
+
+  /* Progress bar animations */
+  .progress-fill {
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Streak counter animation */
+  .streak-bounce {
+    animation: bounceIn 0.5s ease-out;
+  }
+
+  /* Category chip hover effect */
+  .category-chip {
+    transition: all 0.2s ease-out;
+    transform: translateY(0);
+  }
+
+  .category-chip:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-card-hover);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

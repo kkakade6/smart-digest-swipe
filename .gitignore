@@ -1,0 +1,27 @@
+# dependencies & builds
+node_modules
+dist
+.vite
+
+# env files
+.env
+.env.*
+!.env.example
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+
+# VS Code (keep workspace settings if present)
+.vscode/*
+!.vscode/settings.json
+.env
+.env.*
+!.env.example
+.vercel
